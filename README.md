@@ -40,7 +40,7 @@ This repository contains the source code of the Mobile Development project using
 
 The project is structured as follows:
 
-- [`Assets` contains assets for project](https://github.com/Fallid/PemrogramanWeb/tree/main/Assets)
+- [`Assets` contains assets for project](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Assets)
 - [`Modul 1` contains Modul 1 CodeLab and Demo.](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Modul%201)
 - [`Demo` contains demo.](https://github.com/Fallid/PemrogramanWeb/tree/main/Demo)
 
