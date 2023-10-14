@@ -66,7 +66,7 @@ Please read the [Contributing Guidelines]() before contributing to this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/Fallid/PemrogramanWeb/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Fallid/Pemrograman-Mobile/blob/main/LICENSE) file for details.
 
 ---
 
