@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Routes/name_page.dart';
-import '../../style/AppStyle.dart';
+import '../../../Routes/name_page.dart';
+import '../../../../style/AppStyle.dart';
 
 class ContentButton extends StatelessWidget {
   const ContentButton({

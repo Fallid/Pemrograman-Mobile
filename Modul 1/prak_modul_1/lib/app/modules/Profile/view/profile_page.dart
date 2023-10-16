@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:prak_modul_1/style/AppStyle.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -27,12 +26,14 @@ class _MyProfileState extends State<MyProfile> {
       backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(
           backgroundColor: AppStyle.backgroundColor,
-          leading: IconButton(
-              onPressed: () {
-                Get.reset();
-              },
-              icon: Icon(Icons.arrow_back_ios)),
-          title: Text("Profile")),
+          title: Text(
+            "Profile",
+            style: TextStyle(color: AppStyle.secondColor),
+          )),
+      body: const Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(),
+      ),
     );
   }
 }

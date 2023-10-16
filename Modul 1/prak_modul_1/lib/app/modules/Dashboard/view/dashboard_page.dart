@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:prak_modul_1/presentation/Notification/notif_page.dart';
-import 'package:prak_modul_1/presentation/Profile/profile_page.dart';
+import 'package:prak_modul_1/app/modules/Notification/view/notif_page.dart';
+import 'package:prak_modul_1/app/modules/Profile/view/profile_page.dart';
 
-import '../../style/AppStyle.dart';
+import '../../../../style/AppStyle.dart';
 import 'home_page.dart';
 
 class Dashboard extends StatelessWidget {

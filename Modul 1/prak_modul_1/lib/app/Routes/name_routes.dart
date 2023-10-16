@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:prak_modul_1/Routes/name_page.dart';
-import 'package:prak_modul_1/presentation/Dashboard/home_page.dart';
-import 'package:prak_modul_1/presentation/Notification/notif_page.dart';
-import 'package:prak_modul_1/presentation/Profile/profile_page.dart';
+import 'package:prak_modul_1/app/Routes/name_page.dart';
+import 'package:prak_modul_1/app/modules/Dashboard/view/home_page.dart';
+import 'package:prak_modul_1/app/modules/Notification/view/notif_page.dart';
+import 'package:prak_modul_1/app/modules/Profile/view/profile_page.dart';
 
 class PageRoutes {
   static final pages = [

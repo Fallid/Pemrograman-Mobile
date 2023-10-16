@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../Routes/name_page.dart';
-import '../../style/AppStyle.dart';
+import '../../../Routes/name_page.dart';
+import '../../../../style/AppStyle.dart';
 import 'widget_content.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,7 +49,6 @@ class _HomePageState extends State<HomePage> {
               child: IconButton(
                 onPressed: () {
                   Get.toNamed(PageName.notification);
-                  Get.reset();
                 },
                 icon:
                     Icon(Icons.notifications_none, color: AppStyle.secondColor),

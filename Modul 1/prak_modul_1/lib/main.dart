@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:sizer/sizer.dart';
 
-import 'Routes/name_routes.dart';
-import 'presentation/Dashboard/dashboard_page.dart';
+import 'app/Routes/name_routes.dart';
+import 'app/modules/Dashboard/view/dashboard_page.dart';
 import 'style/AppStyle.dart';
 
 void main() async {
