@@ -24,7 +24,7 @@ class ContentButton extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                "assets/images/photoTrending.jpg",
+                "lib/app/data/assets/images/photoTrending.jpg",
               ),
             ),
             Container(
@@ -284,7 +284,7 @@ class ContentCategory extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
-                        "assets/images/virtualreality.jpg",
+                        "lib/app/data/assets/images/virtualreality.jpg",
                         width: 37.w,
                         height: 12.h,
                         fit: BoxFit.cover,
@@ -374,7 +374,7 @@ class ContentCategory extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
-                        "assets/images/virtualreality.jpg",
+                        "lib/app/data/assets/images/virtualreality.jpg",
                         width: 37.w,
                         height: 12.h,
                         fit: BoxFit.cover,

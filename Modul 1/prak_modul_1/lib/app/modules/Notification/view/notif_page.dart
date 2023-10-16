@@ -142,7 +142,7 @@ class NewsContain extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  "assets/images/virtualreality.jpg",
+                  "lib/app/data/assets/images/virtualreality.jpg",
                   height: 10.h,
                   fit: BoxFit.cover,
                 ),
