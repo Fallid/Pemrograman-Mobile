@@ -33,8 +33,10 @@ This repository contains the source code of the Mobile Development project using
 
 1. Clone this repository
 2. Open the project in your IDE
-3. Run the project
-4. Choose the module you want to run
+3. Choose the module or folder you want to run
+4. Go to file main.dart of module/folder you choose
+5. Go to terminal and user command "flutter pub get"
+6. Run the project with start debugging
 
 ## Folder Structure
 
@@ -42,7 +44,6 @@ The project is structured as follows:
 
 - [`Assets` contains assets for project](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Assets)
 - [`Modul 1` contains Modul 1 CodeLab and Demo.](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Modul%201)
-- [`Demo` contains demo.](https://github.com/Fallid/PemrogramanWeb/tree/main/Demo)
 
 ---
 
@@ -74,4 +75,4 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 [⬆ back to top](#table-of-contents)
 
-[//]: # "This README was generated with ❤️ by fallid"# PemrogramanWeb
+[//]: # "This README was generated with ❤️ by Fallid"# PemrogramanMobile
