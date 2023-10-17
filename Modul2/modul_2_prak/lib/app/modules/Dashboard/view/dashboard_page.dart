@@ -4,8 +4,8 @@ import 'package:modul_2_prak/app/modules/Profile/view/profile_page.dart';
 import 'package:modul_2_prak/style/AppStyle.dart';
 import 'home_page.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class DashboardView extends StatelessWidget {
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _MyDashboardState extends State<MyDashboard> {
     const HomeView(),
     const NotifView(),
     const NotifView(),
-    const ProfieView()
+    ProfileView()
   ];
 
   @override
