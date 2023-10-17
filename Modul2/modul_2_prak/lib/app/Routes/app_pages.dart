@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:modul_2_prak/app/modules/Dashboard/bindings/dashboard_binding.dart';
-import 'package:modul_2_prak/app/modules/Dashboard/view/home_page.dart';
+import 'package:modul_2_prak/app/modules/Dashboard/view/dashboard_page.dart';
 import 'package:modul_2_prak/app/modules/Notification/bindings/notif_binding.dart';
 import 'package:modul_2_prak/app/modules/Notification/view/notif_page.dart';
 import 'package:modul_2_prak/app/modules/Profile/bindings/profile_binding.dart';
@@ -18,7 +18,7 @@ class AppPages {
   static final routes = [
     GetPage(
         name: _Paths.DASHBOARD,
-        page: () => const HomeView(),
+        page: () => const DashboardView(),
         binding: DashboardBinding()),
     GetPage(
         name: _Paths.NOTIFICATION,
@@ -26,7 +26,7 @@ class AppPages {
         binding: NotifBinding()),
     GetPage(
         name: _Paths.PROFILE,
-        page: () => const ProfieView(),
+        page: () => ProfileView(),
         binding: ProfileBinding())
   ];
 }
