@@ -10,24 +10,30 @@ class ProfileController extends GetxController {
   File? get profileImage => pickFile.value;
   XFile? imageFile;
   pickImageFileFromGallery() async {
-    imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    try {
+      imageFile = await ImagePicker().pickImage(source: ImageSource.gallery);
 
-    if (imageFile != null) {
-      Get.snackbar("Profile Image", "Berhasil upload image dari gallery");
-    } else {
-      Exception("Masukkan Gambar");
+      if (imageFile != null) {
+        Get.snackbar("Profile Image", "Berhasil upload image dari gallery");
+      }
+
+      pickFile = Rx<File?>(File(imageFile!.path));
+    } catch (err) {
+      Get.snackbar("Profile Image", "anda tidak memilih gambar!");
     }
-
-    pickFile = Rx<File?>(File(imageFile!.path));
   }
 
   pickImageFileFromCamera() async {
-    imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
+    try {
+      imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
 
-    if (imageFile != null) {
-      Get.snackbar("Profile Image", "Berhasil upload image dari kamera");
+      if (imageFile != null) {
+        Get.snackbar("Profile Image", "Berhasil upload image dari kamera");
+      }
+
+      pickFile = Rx<File?>(File(imageFile!.path));
+    } catch (err) {
+      Get.snackbar("Profile Image", "anda tidak memilih gambar!");
     }
-
-    pickFile = Rx<File?>(File(imageFile!.path));
   }
 }
