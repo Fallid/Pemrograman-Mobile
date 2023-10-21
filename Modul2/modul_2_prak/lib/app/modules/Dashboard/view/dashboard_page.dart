@@ -29,16 +29,12 @@ class MyDashboard extends StatefulWidget {
 class _MyDashboardState extends State<MyDashboard> {
   var dateTime = DateTime.now();
   int _selectedIndex = 0;
-  final screens = [
-    const HomeView(),
-    const NotifView(),
-    const NotifView(),
-    ProfileView()
-  ];
+  final screens = [const HomeView(), NotifView(), NotifView(), ProfileView()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppStyle.backgroundColor,
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

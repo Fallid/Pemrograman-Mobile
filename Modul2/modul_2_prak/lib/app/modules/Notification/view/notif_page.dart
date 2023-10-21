@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../style/AppStyle.dart';
+import 'package:modul_2_prak/app/modules/Notification/controller/notif_controller.dart';
+import 'package:modul_2_prak/style/AppStyle.dart';
+
 import 'package:sizer/sizer.dart';
 
-class NotifView extends StatelessWidget {
-  const NotifView({super.key});
+class NotifView extends GetView<NotifController> {
+  NotifView({super.key});
+
+  final NotifController notifController = Get.put(NotifController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +26,10 @@ class MyNotif extends StatefulWidget {
 }
 
 class _MyNotifState extends State<MyNotif> {
+  var _notifController = NotifController.notifController;
   @override
   Widget build(BuildContext context) {
+    _notifController.readNamaStorage();
     return Scaffold(
       backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(
@@ -35,25 +41,61 @@ class _MyNotifState extends State<MyNotif> {
             icon: const Icon(Icons.arrow_back_ios)),
         title: const Text("Notification"),
       ),
-      body: const Padding(
-        padding: EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 0),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-              NewsContain(),
-            ],
-          ),
-        ),
+      body: Padding(
+          padding: EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 0),
+          child: ListView.builder(
+              itemCount: _notifController.itemCount,
+              itemBuilder: ((context, index) {
+                return Card(
+                    margin: EdgeInsets.only(bottom: 2.h),
+                    color: AppStyle.tirtaOnActiveColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        // CircleAvatar(
+                        //   backgroundImage: FileImage(File(_notifController
+                        //       .profileModel.value[index].imagePath!)),
+                        // ),
+                        SizedBox(
+                          width: 3.w,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              _notifController.passName.toString(),
+                              style: TextStyle(
+                                  color: AppStyle.secondColor, fontSize: 14.sp),
+                            ),
+                            // Text(
+                            //   _notifController.profileModel.value[index].bio!,
+                            //   style: TextStyle(
+                            //       color: AppStyle.secondColor, fontSize: 12.sp),
+                            // ),
+                          ],
+                        )
+                      ],
+                    ));
+              }))),
+    );
+  }
+
+  SingleChildScrollView Default() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+          NewsContain(),
+        ],
       ),
     );
   }
