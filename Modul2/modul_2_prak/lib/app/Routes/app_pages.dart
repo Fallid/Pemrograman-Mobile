@@ -22,7 +22,7 @@ class AppPages {
         binding: DashboardBinding()),
     GetPage(
         name: _Paths.NOTIFICATION,
-        page: () => const NotifView(),
+        page: () => NotifView(),
         binding: NotifBinding()),
     GetPage(
         name: _Paths.PROFILE,

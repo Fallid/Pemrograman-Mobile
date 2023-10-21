@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:modul_2_prak/app/modules/Profile/controllers/profile_controller.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:sizer/sizer.dart';
 
 import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Get.put<ProfileController>(ProfileController());
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
