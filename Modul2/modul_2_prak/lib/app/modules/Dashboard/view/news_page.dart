@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:modul_2_prak/app/modules/Dashboard/view/news_content.dart';
 import 'package:modul_2_prak/app/routes/app_pages.dart';
 import 'package:modul_2_prak/style/AppStyle.dart';
 import 'package:sizer/sizer.dart';
 import 'widget_content.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({
+class NewsView extends StatefulWidget {
+  const NewsView({
     super.key,
   });
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<NewsView> createState() => _NewsViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _NewsViewState extends State<NewsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,43 +60,8 @@ class _HomeViewState extends State<HomeView> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.all(3.w),
-                child: Column(children: [
-                  const ContentButton(),
-                  SizedBox(
-                    height: 4.h,
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Following",
-                            style: TextStyle(
-                                color: AppStyle.secondColor,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          TextButton(
-                              onPressed: () {
-                                // Get.toNamed(Routes.NEWS);
-                              },
-                              child: Text(
-                                "View more",
-                                style: TextStyle(
-                                    color: AppStyle.primaryColor, fontSize: 14),
-                              ))
-                        ],
-                      ),
-                    ],
-                  ),
-                ]),
-              ),
-              CategoryButtons(),
-              ContentCategory()
-            ],
+              ContentNewsCategory()
+              ],
           ),
         ));
   }

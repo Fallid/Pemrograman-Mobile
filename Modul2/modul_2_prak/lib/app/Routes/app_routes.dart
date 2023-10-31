@@ -6,6 +6,7 @@ abstract class Routes {
   static const NOTIFICATION = _Paths.NOTIFICATION;
   static const PROFILE = _Paths.PROFILE;
   static const TRENDING = _Paths.TRENDING;
+  static const NEWS = _Paths.NEWS;
 }
 
 abstract class _Paths {
@@ -14,4 +15,5 @@ abstract class _Paths {
   static const NOTIFICATION = "/notification";
   static const PROFILE = '/profile';
   static const TRENDING = "/trending";
+  static const NEWS = "/news";
 }

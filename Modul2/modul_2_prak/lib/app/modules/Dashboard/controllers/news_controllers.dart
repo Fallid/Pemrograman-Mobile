@@ -5,16 +5,16 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:modul_2_prak/app/data/api/api_service.dart';
 
-class DashboardController extends GetxController {
-  static DashboardController dashboardController = Get.find();
-  String baseUrl =
-      "https://newsapi.org/v2/top-headlines?country=id&apiKey=8849ce4f79484316bb3d4e00adfd54ef";
+class NewsController extends GetxController {
+  static NewsController dashboardController = Get.find();
+  // String baseUrl =
+  //     "https://newsapi.org/v2/top-headlines?country=id&apiKey=8849ce4f79484316bb3d4e00adfd54ef";
   final storage = GetStorage();
   late Future<List<Article>> futureNews;
   @override
   void onInit() async {
     super.onInit();
-    futureNews = fetchNews();
+    futureNews = fetchNews(1);
   }
 
 
@@ -32,8 +32,8 @@ class DashboardController extends GetxController {
     await storage.write("urlNews", url);
   }
 
-  Future<List<Article>> fetchNews() async {
-    var response = await get(Uri.parse(baseUrl));
+  Future<List<Article>> fetchNews(page) async {
+    var response = await get(Uri.parse("https://newsapi.org/v2/top-headlines?country=id&pagesize=5&page=this.$page&apiKey=8849ce4f79484316bb3d4e00adfd54ef"));
     if (response.statusCode == 200) {
       Map<String, dynamic> json = jsonDecode(response.body);
       List<dynamic> body = json['articles'];
