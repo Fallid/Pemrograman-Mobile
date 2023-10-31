@@ -16,7 +16,7 @@ class HomeView extends GetView<HomeController> {
       ),
       body: Center(
           child: FutureBuilder(
-              future: controller.fetchNews(),
+              future: controller.futureNews,
               builder: (context, snapshot) {
                 var state = snapshot.connectionState;
                 if (state != ConnectionState.done) {
@@ -25,16 +25,13 @@ class HomeView extends GetView<HomeController> {
                   );
                 } else {
                   if (snapshot.hasData) {
-                    // List<Article>? articles = snapshot.data;
-                    return Text("Success!");
-                    // ListView.builder(
-                    //   itemBuilder: (context, index) {
-                    //     ListTile(
-                    //       title: Text(articles![index].title),
-                    //     );
-                    //   },
-                    //   itemCount: articles?.length,
-                    // );
+                    List<Article>? articles = snapshot.data;
+                    return ListView.builder(
+                      itemBuilder: (context, index) => Text(
+                        articles![index].title,
+                      ),
+                      itemCount: snapshot.data!.length,
+                    );
                   } else if (snapshot.hasError) {
                     return Center(
                       child: Text("${snapshot.error}"),

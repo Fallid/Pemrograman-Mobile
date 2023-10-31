@@ -6,13 +6,14 @@ import 'package:modul_3_prak/app/data/api/api_response.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
-  final baseUrl =
+  String baseUrl =
       "https://newsapi.org/v2/top-headlines?country=id&apiKey=8849ce4f79484316bb3d4e00adfd54ef";
   final count = 0.obs;
+  late Future<List<Article>> futureNews;
   @override
   void onInit() async {
     super.onInit();
-    await fetchNews();
+    futureNews = fetchNews();
   }
 
   @override
