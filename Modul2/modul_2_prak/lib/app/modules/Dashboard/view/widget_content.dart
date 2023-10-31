@@ -27,6 +27,7 @@ class ContentButton extends GetView<DashboardController> {
               int index = 1;
               return InkWell(
                 onTap: () {
+                  controller.setUrlNews(articles[index].url);
                   Get.toNamed(Routes.TRENDING);
                 },
                 child: Column(

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:modul_2_prak/app/data/api/api_service.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -11,6 +12,7 @@ class TrendingController extends GetxController {
   String baseUrl =
       "https://newsapi.org/v2/top-headlines?country=id&apiKey=8849ce4f79484316bb3d4e00adfd54ef";
   late Future<List<Article>> futureNews;
+  String urlNews = GetStorage().read("urlNews");
   @override
   void onInit() {
     super.onInit();
@@ -46,6 +48,6 @@ class TrendingController extends GetxController {
   var controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..setBackgroundColor(const Color(0x00000000))
-    ..loadRequest(Uri.parse('https://github.com/Fallid'));
+    ..loadRequest(Uri.parse(GetStorage().read("urlNews")));
   // ganti url di atas menjadi url website yang ingin kalian tampilkan
 }
