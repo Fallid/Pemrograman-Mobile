@@ -6,99 +6,124 @@ import 'package:modul_2_prak/app/modules/Dashboard/controllers/dashboard_control
 import 'package:modul_2_prak/style/AppStyle.dart';
 import 'package:sizer/sizer.dart';
 
-class ContentButton extends StatelessWidget {
+class ContentButton extends GetView<DashboardController> {
   const ContentButton({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.toNamed(Routes.TRENDING);
-      },
-      child: Column(
-        children: [
-          Stack(children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                "lib/app/data/assets/images/photoTrending.jpg",
-              ),
-            ),
-            Container(
-                alignment: const Alignment(-0.85, -0.55),
-                height: 20.h,
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(1.7.h, 1.h, 1.7.h, 1.h),
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Text(
-                    "Trending",
-                    style: TextStyle(
-                      color: AppStyle.secondColor,
-                    ),
-                  ),
-                ))
-          ]),
-          SizedBox(
-            height: 2.h,
-          ),
-          const Text(
-            "We meet online to pray for Ukraine: Kyiv's Anglicans spread across Europe continue to meet",
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          SizedBox(
-            height: 1.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "World",
-                style: TextStyle(color: AppStyle.tirtaColor),
-              ),
-              SizedBox(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return FutureBuilder(
+        future: controller.futureNews,
+        builder: (context, snapshot) {
+          var state = snapshot.connectionState;
+          if (state != ConnectionState.done) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            if (snapshot.hasData) {
+              List<Article>? articles = snapshot.data;
+              int index = 1;
+              return InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.TRENDING);
+                },
+                child: Column(
                   children: [
-                    Icon(
-                      Icons.watch_later_outlined,
-                      color: AppStyle.tirtaColor,
-                      size: 16,
-                    ),
+                    Stack(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                            "lib/app/data/assets/images/photoTrending.jpg"),
+                      ),
+                      Container(
+                          alignment: const Alignment(-0.85, -0.55),
+                          height: 20.h,
+                          child: Container(
+                            padding:
+                                EdgeInsets.fromLTRB(1.7.h, 1.h, 1.7.h, 1.h),
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Text(
+                              "Trending",
+                              style: TextStyle(
+                                color: AppStyle.secondColor,
+                              ),
+                            ),
+                          )),
+                    ]),
                     SizedBox(
-                      width: 1.w,
+                      height: 2.h,
                     ),
                     Text(
-                      "1h ago",
-                      style: TextStyle(color: AppStyle.tirtaColor),
+                      articles![index].title,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                     ),
                     SizedBox(
-                      width: 3.w,
+                      height: 1.h,
                     ),
-                    Icon(
-                      Icons.chat_bubble_outline,
-                      color: AppStyle.tirtaColor,
-                      size: 16,
-                    ),
-                    SizedBox(
-                      width: 1.w,
-                    ),
-                    Text(
-                      '5',
-                      style: TextStyle(color: AppStyle.tirtaColor),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "World",
+                          style: TextStyle(color: AppStyle.tirtaColor),
+                        ),
+                        SizedBox(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.watch_later_outlined,
+                                color: AppStyle.tirtaColor,
+                                size: 16,
+                              ),
+                              SizedBox(
+                                width: 1.w,
+                              ),
+                              Text(
+                                "${articles[index].publishedAt.hour} ago",
+                                style: TextStyle(color: AppStyle.tirtaColor),
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              Icon(
+                                Icons.chat_bubble_outline,
+                                color: AppStyle.tirtaColor,
+                                size: 16,
+                              ),
+                              SizedBox(
+                                width: 1.w,
+                              ),
+                              Text(
+                                '5',
+                                style: TextStyle(color: AppStyle.tirtaColor),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     )
                   ],
                 ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text("${snapshot.error}"),
+              );
+            } else {
+              return const Center(
+                child: Text("Cannot load articles"),
+              );
+            }
+          }
+        });
   }
 }
 

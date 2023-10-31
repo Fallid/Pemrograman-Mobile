@@ -1,8 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:modul_2_prak/app/data/api/api_service.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class TrendingController extends GetxController {
+  late String Url;
+  String baseUrl =
+      "https://newsapi.org/v2/top-headlines?country=id&apiKey=8849ce4f79484316bb3d4e00adfd54ef";
+  late Future<List<Article>> futureNews;
   @override
   void onInit() {
     super.onInit();
@@ -16,6 +24,23 @@ class TrendingController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<List<Article>> fetchNews() async {
+    var response = await get(Uri.parse(baseUrl));
+    if (response.statusCode == 200) {
+      Map<String, dynamic> json = jsonDecode(response.body);
+      List<dynamic> body = json['articles'];
+      List<Article> articles =
+          body.map((dynamic item) => Article.fromJson(item)).toList();
+      return articles;
+    } else {
+      throw Exception('Failed to load articel');
+    }
+  }
+
+  String getUrl(String url) {
+    return Url = url;
   }
 
   var controller = WebViewController()
