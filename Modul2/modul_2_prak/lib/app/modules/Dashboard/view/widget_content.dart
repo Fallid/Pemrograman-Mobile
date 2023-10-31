@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:modul_2_prak/app/routes/app_pages.dart';
+import 'package:modul_2_prak/app/Routes/app_pages.dart';
+import 'package:modul_2_prak/app/data/api/api_service.dart';
+import 'package:modul_2_prak/app/modules/Dashboard/controllers/dashboard_controller.dart';
 import 'package:modul_2_prak/style/AppStyle.dart';
 import 'package:sizer/sizer.dart';
 
@@ -13,7 +15,7 @@ class ContentButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Routes.NOTIFICATION);
+        Get.toNamed(Routes.TRENDING);
       },
       child: Column(
         children: [
@@ -100,7 +102,7 @@ class ContentButton extends StatelessWidget {
   }
 }
 
-class CategoryButtons extends StatelessWidget {
+class CategoryButtons extends GetView<DashboardController> {
   const CategoryButtons({
     super.key,
   });
@@ -196,7 +198,7 @@ class CategoryButtons extends StatelessWidget {
   }
 }
 
-class ContentCategory extends StatelessWidget {
+class ContentCategory extends GetView<DashboardController> {
   const ContentCategory({
     super.key,
   });
@@ -204,189 +206,224 @@ class ContentCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(3.w),
-      child: Column(children: [
-        SizedBox(
-          height: 3.h,
-        ),
-        SizedBox(
-          width: 100.w,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Technology",
-                style: TextStyle(color: AppStyle.tirtaColor, fontSize: 12.sp),
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 55.w,
-                    child: Column(
-                      children: [
+        padding: EdgeInsets.all(3.w),
+        child: FutureBuilder(
+            future: controller.futureNews,
+            builder: (context, snapshot) {
+              var state = snapshot.connectionState;
+              if (state != ConnectionState.done) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                if (snapshot.hasData) {
+                  List<Article>? articles = snapshot.data;
+                  return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        print(articles![1].title);
                         Text(
-                          "Why you can't have legs in virtual reality (yet)",
-                          textWidthBasis: TextWidthBasis.parent,
-                          style: TextStyle(
-                              color: AppStyle.secondColor,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 1.h,
-                        ),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.watch_later_outlined,
-                                  size: 14.sp,
-                                  color: AppStyle.tirtaColor,
-                                ),
-                                Text(
-                                  "14h ago",
-                                  style: TextStyle(
-                                      color: AppStyle.tirtaColor,
-                                      fontSize: 10.sp),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.chat_bubble_outline,
-                                  size: 14.sp,
-                                  color: AppStyle.tirtaColor,
-                                ),
-                                Text(
-                                  "23",
-                                  style: TextStyle(
-                                      fontSize: 10.sp,
-                                      color: AppStyle.tirtaColor),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: const Alignment(1, -1),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        "lib/app/data/assets/images/virtualreality.jpg",
-                        width: 37.w,
-                        height: 12.h,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 3.h,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          width: 3.w,
-        ),
-        SizedBox(
-          width: 100.w,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Technology",
-                style: TextStyle(color: AppStyle.tirtaColor, fontSize: 12.sp),
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 55.w,
-                    child: Column(
-                      children: [
-                        Text(
-                          "Why you can't have legs in virtual reality (yet)",
-                          textWidthBasis: TextWidthBasis.parent,
-                          style: TextStyle(
-                              color: AppStyle.secondColor,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 1.h,
-                        ),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.watch_later_outlined,
-                                  size: 14.sp,
-                                  color: AppStyle.tirtaColor,
-                                ),
-                                Text(
-                                  "14h ago",
-                                  style: TextStyle(
-                                      color: AppStyle.tirtaColor,
-                                      fontSize: 10.sp),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.chat_bubble_outline,
-                                  size: 14.sp,
-                                  color: AppStyle.tirtaColor,
-                                ),
-                                Text(
-                                  "23",
-                                  style: TextStyle(
-                                      fontSize: 10.sp,
-                                      color: AppStyle.tirtaColor),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: const Alignment(1, -1),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        "lib/app/data/assets/images/virtualreality.jpg",
-                        width: 37.w,
-                        height: 12.h,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 3.h,
-              ),
-            ],
-          ),
-        ),
-      ]),
-    );
+                          articles![1].title,
+                          style: TextStyle(color: AppStyle.secondColor),
+                        );
+                      }
+                      // SizedBox(
+                      //     height: 20.h,
+                      //     width: 100.w,
+                      //     child: Text(articles[index].title))
+                      );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text("${snapshot.error}"),
+                  );
+                } else {
+                  return const Text("data");
+                }
+              }
+            })
+        // Column(children: [
+        //   SizedBox(
+        //     height: 3.h,
+        //   ),
+        //   SizedBox(
+        //     width: 100.w,
+        //     child: Column(
+        //       mainAxisAlignment: MainAxisAlignment.start,
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         Text(
+        //           "Technology",
+        //           style: TextStyle(color: AppStyle.tirtaColor, fontSize: 12.sp),
+        //         ),
+        //         Row(
+        //           children: [
+        //             SizedBox(
+        //               width: 55.w,
+        //               child: Column(
+        //                 children: [
+        //                   Text(
+        //                     "Why you can't have legs in virtual reality (yet)",
+        //                     textWidthBasis: TextWidthBasis.parent,
+        //                     style: TextStyle(
+        //                         color: AppStyle.secondColor,
+        //                         fontSize: 14.sp,
+        //                         fontWeight: FontWeight.bold),
+        //                   ),
+        //                   SizedBox(
+        //                     height: 1.h,
+        //                   ),
+        //                   Row(
+        //                     children: [
+        //                       Row(
+        //                         children: [
+        //                           Icon(
+        //                             Icons.watch_later_outlined,
+        //                             size: 14.sp,
+        //                             color: AppStyle.tirtaColor,
+        //                           ),
+        //                           Text(
+        //                             "14h ago",
+        //                             style: TextStyle(
+        //                                 color: AppStyle.tirtaColor,
+        //                                 fontSize: 10.sp),
+        //                           ),
+        //                         ],
+        //                       ),
+        //                       SizedBox(
+        //                         width: 10.w,
+        //                       ),
+        //                       Row(
+        //                         children: [
+        //                           Icon(
+        //                             Icons.chat_bubble_outline,
+        //                             size: 14.sp,
+        //                             color: AppStyle.tirtaColor,
+        //                           ),
+        //                           Text(
+        //                             "23",
+        //                             style: TextStyle(
+        //                                 fontSize: 10.sp,
+        //                                 color: AppStyle.tirtaColor),
+        //                           )
+        //                         ],
+        //                       )
+        //                     ],
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //             Container(
+        //               alignment: const Alignment(1, -1),
+        //               child: ClipRRect(
+        //                 borderRadius: BorderRadius.circular(10),
+        //                 child: Image.asset(
+        //                   "lib/app/data/assets/images/virtualreality.jpg",
+        //                   width: 37.w,
+        //                   height: 12.h,
+        //                   fit: BoxFit.cover,
+        //                 ),
+        //               ),
+        //             )
+        //           ],
+        //         ),
+        //         SizedBox(
+        //           height: 3.h,
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        //   SizedBox(
+        //     width: 3.w,
+        //   ),
+        //   SizedBox(
+        //     width: 100.w,
+        //     child: Column(
+        //       mainAxisAlignment: MainAxisAlignment.start,
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         Text(
+        //           "Technology",
+        //           style: TextStyle(color: AppStyle.tirtaColor, fontSize: 12.sp),
+        //         ),
+        //         Row(
+        //           children: [
+        //             SizedBox(
+        //               width: 55.w,
+        //               child: Column(
+        //                 children: [
+        //                   Text(
+        //                     "Why you can't have legs in virtual reality (yet)",
+        //                     textWidthBasis: TextWidthBasis.parent,
+        //                     style: TextStyle(
+        //                         color: AppStyle.secondColor,
+        //                         fontSize: 14.sp,
+        //                         fontWeight: FontWeight.bold),
+        //                   ),
+        //                   SizedBox(
+        //                     height: 1.h,
+        //                   ),
+        //                   Row(
+        //                     children: [
+        //                       Row(
+        //                         children: [
+        //                           Icon(
+        //                             Icons.watch_later_outlined,
+        //                             size: 14.sp,
+        //                             color: AppStyle.tirtaColor,
+        //                           ),
+        //                           Text(
+        //                             "14h ago",
+        //                             style: TextStyle(
+        //                                 color: AppStyle.tirtaColor,
+        //                                 fontSize: 10.sp),
+        //                           ),
+        //                         ],
+        //                       ),
+        //                       SizedBox(
+        //                         width: 10.w,
+        //                       ),
+        //                       Row(
+        //                         children: [
+        //                           Icon(
+        //                             Icons.chat_bubble_outline,
+        //                             size: 14.sp,
+        //                             color: AppStyle.tirtaColor,
+        //                           ),
+        //                           Text(
+        //                             "23",
+        //                             style: TextStyle(
+        //                                 fontSize: 10.sp,
+        //                                 color: AppStyle.tirtaColor),
+        //                           )
+        //                         ],
+        //                       )
+        //                     ],
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //             Container(
+        //               alignment: const Alignment(1, -1),
+        //               child: ClipRRect(
+        //                 borderRadius: BorderRadius.circular(10),
+        //                 child: Image.asset(
+        //                   "lib/app/data/assets/images/virtualreality.jpg",
+        //                   width: 37.w,
+        //                   height: 12.h,
+        //                   fit: BoxFit.cover,
+        //                 ),
+        //               ),
+        //             )
+        //           ],
+        //         ),
+        //         SizedBox(
+        //           height: 3.h,
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ]),
+        );
   }
 }
