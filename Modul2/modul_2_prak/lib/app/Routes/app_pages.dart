@@ -7,6 +7,8 @@ import 'package:modul_2_prak/app/modules/Notification/bindings/notif_binding.dar
 import 'package:modul_2_prak/app/modules/Notification/view/notif_page.dart';
 import 'package:modul_2_prak/app/modules/Profile/bindings/profile_binding.dart';
 import 'package:modul_2_prak/app/modules/Profile/view/profile_page.dart';
+import 'package:modul_2_prak/app/modules/Trending/bindings/trending_bindings.dart';
+import 'package:modul_2_prak/app/modules/Trending/view/trending_detail.dart';
 
 part 'app_routes.dart';
 
@@ -27,6 +29,10 @@ class AppPages {
     GetPage(
         name: _Paths.PROFILE,
         page: () => ProfileView(),
-        binding: ProfileBinding())
+        binding: ProfileBinding()),
+    GetPage(
+        name: _Paths.TRENDING,
+        page: () => TrendingView(),
+        binding: TrendingBinding())
   ];
 }

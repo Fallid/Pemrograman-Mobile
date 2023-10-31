@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:modul_2_prak/app/modules/Dashboard/controllers/dashboard_controller.dart';
 import 'package:modul_2_prak/app/modules/Notification/view/notif_page.dart';
 import 'package:modul_2_prak/app/modules/Profile/view/profile_page.dart';
 import 'package:modul_2_prak/style/AppStyle.dart';
 import 'home_page.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends GetView<DashboardController> {
   const DashboardView({super.key});
 
   @override
