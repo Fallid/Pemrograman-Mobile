@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:modul_2_prak/app/routes/app_pages.dart';
+import 'package:modul_2_prak/app/Routes/app_pages.dart';
 import 'package:modul_2_prak/style/AppStyle.dart';
 import 'package:sizer/sizer.dart';
 
@@ -13,7 +13,7 @@ class ContentButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Routes.NOTIFICATION);
+        Get.toNamed(Routes.TRENDING);
       },
       child: Column(
         children: [
