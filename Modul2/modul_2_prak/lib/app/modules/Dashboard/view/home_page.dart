@@ -55,44 +55,46 @@ class _HomeViewState extends State<HomeView> {
           ],
           backgroundColor: AppStyle.backgroundColor,
         ),
-        body:
-            // Column(
-            //   children: [
-            //     Padding(
-            //       padding: EdgeInsets.all(3.w),
-            //       child: Column(children: [
-            //         const ContentButton(),
-            //         SizedBox(
-            //           height: 4.h,
-            //         ),
-            //         Column(
-            //           children: [
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   "Following",
-            //                   style: TextStyle(
-            //                       color: AppStyle.secondColor,
-            //                       fontSize: 16.sp,
-            //                       fontWeight: FontWeight.bold),
-            //                 ),
-            //                 TextButton(
-            //                     onPressed: () {},
-            //                     child: Text(
-            //                       "View more",
-            //                       style: TextStyle(
-            //                           color: AppStyle.primaryColor, fontSize: 14),
-            //                     ))
-            //               ],
-            //             ),
-            //           ],
-            //         ),
-            //       ]),
-            //     ),
-            // CategoryButtons(),
-            ContentCategory()
-        // ],
-        );
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(3.w),
+                child: Column(children: [
+                  const ContentButton(),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Following",
+                            style: TextStyle(
+                                color: AppStyle.secondColor,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "View more",
+                                style: TextStyle(
+                                    color: AppStyle.primaryColor, fontSize: 14),
+                              ))
+                        ],
+                      ),
+                    ],
+                  ),
+                ]),
+              ),
+              CategoryButtons(),
+              ContentCategory()
+            ],
+          ),
+        ));
   }
 }
