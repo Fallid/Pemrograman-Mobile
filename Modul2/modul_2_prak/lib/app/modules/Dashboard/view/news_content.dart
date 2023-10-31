@@ -227,7 +227,6 @@ class CategoryButtons extends GetView<DashboardController> {
   }
 }
 
-
 class ContentNewsCategory extends GetView<NewsController> {
   const ContentNewsCategory({
     super.key,
@@ -248,10 +247,10 @@ class ContentNewsCategory extends GetView<NewsController> {
               } else {
                 if (snapshot.hasData) {
                   List<Article>? articles = snapshot.data;
-                  return Row(
+                  return Column(
                     children: [
                       SizedBox(
-                        height: 620,
+                        height: 70.h,
                         width: 100.w,
                         child: ListView.builder(
                             scrollDirection: Axis.vertical,
@@ -294,7 +293,8 @@ class ContentNewsCategory extends GetView<NewsController> {
                                                   Text(
                                                     "${articles[index].publishedAt.hour} ago",
                                                     style: TextStyle(
-                                                        color: AppStyle.tirtaColor,
+                                                        color:
+                                                            AppStyle.tirtaColor,
                                                         fontSize: 10.sp),
                                                   ),
                                                 ],
@@ -313,7 +313,8 @@ class ContentNewsCategory extends GetView<NewsController> {
                                                     "23",
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
-                                                        color: AppStyle.tirtaColor),
+                                                        color: AppStyle
+                                                            .tirtaColor),
                                                   )
                                                 ],
                                               ),
@@ -326,7 +327,8 @@ class ContentNewsCategory extends GetView<NewsController> {
                                         height: 12.h,
                                         alignment: const Alignment(1, -1),
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           child: Image.asset(
                                             "lib/app/data/assets/images/virtualreality.jpg",
                                             width: 30.w,
@@ -339,12 +341,12 @@ class ContentNewsCategory extends GetView<NewsController> {
                                   ),
                                   SizedBox(
                                     height: 2.h,
-                                  )
+                                  ),
                                 ],
                               );
                             }),
                       ),
-                      ElevatedButton(onPressed: (){}, child: Text("data"))
+                      ElevatedButton(onPressed: () {}, child: Text("data"))
                     ],
                   );
                 } else if (snapshot.hasError) {
