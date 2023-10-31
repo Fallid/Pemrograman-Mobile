@@ -6,42 +6,46 @@ import 'package:http/http.dart';
 import 'package:modul_2_prak/app/data/api/api_service.dart';
 
 class NewsController extends GetxController {
-  static NewsController dashboardController = Get.find();
-  // String baseUrl =
-  //     "https://newsapi.org/v2/top-headlines?country=id&apiKey=8849ce4f79484316bb3d4e00adfd54ef";
   final storage = GetStorage();
-  late Future<List<Article>> futureNews;
+  int pages = 1;
+  Rx<Future<List<Article>>> futureNews = Future.value(<Article>[]).obs;
+
   @override
-  void onInit() async {
+  void onInit() {
     super.onInit();
-    futureNews = fetchNews(1);
+    fetchNews();
   }
 
-
-  @override
-  void onReady() {
-    super.onReady();
+  void fetchNextPage() {
+    pages++; // Increment the page number to fetch the next page
+    fetchNews(); // Call the method to fetch news for the updated page
+  }
+  void fetchPrevPage() {
+    pages--; // Increment the page number to fetch the next page
+    fetchNews(); // Call the method to fetch news for the updated page
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void fetchNews() {
+    futureNews.value = _fetchNews(pages);
   }
 
-  setUrlNews(String url) async {
-    await storage.write("urlNews", url);
-  }
+  Future<List<Article>> _fetchNews(int page) async {
+    int pages = page;
+    try {
+      var response = await get(Uri.parse(
+          "https://newsapi.org/v2/top-headlines?country=id&pagesize=5&page=$pages&apiKey=8849ce4f79484316bb3d4e00adfd54ef"));
 
-  Future<List<Article>> fetchNews(page) async {
-    var response = await get(Uri.parse("https://newsapi.org/v2/top-headlines?country=id&pagesize=5&page=this.$page&apiKey=8849ce4f79484316bb3d4e00adfd54ef"));
-    if (response.statusCode == 200) {
-      Map<String, dynamic> json = jsonDecode(response.body);
-      List<dynamic> body = json['articles'];
-      List<Article> articles =
-          body.map((dynamic item) => Article.fromJson(item)).toList();
-      return articles;
-    } else {
-      throw Exception('Failed to load articel');
+      if (response.statusCode == 200) {
+        Map<String, dynamic> json = jsonDecode(response.body);
+        List<dynamic> body = json['articles'];
+        List<Article> articles =
+            body.map((dynamic item) => Article.fromJson(item)).toList();
+        return articles;
+      } else {
+        throw Exception('Failed to load article');
+      }
+    } catch (e) {
+      throw Exception('Failed to load article: $e');
     }
   }
 }

@@ -80,7 +80,7 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           TextButton(
                               onPressed: () {
-                                // Get.toNamed(Routes.NEWS);
+                                Get.toNamed(Routes.NEWS);
                               },
                               child: Text(
                                 "View more",

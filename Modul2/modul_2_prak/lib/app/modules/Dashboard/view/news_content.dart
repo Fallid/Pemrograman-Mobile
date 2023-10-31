@@ -236,127 +236,157 @@ class ContentNewsCategory extends GetView<NewsController> {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.all(3.w),
-        child: FutureBuilder(
-            future: controller.futureNews,
-            builder: (context, snapshot) {
-              var state = snapshot.connectionState;
-              if (state != ConnectionState.done) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                if (snapshot.hasData) {
-                  List<Article>? articles = snapshot.data;
-                  return Column(
-                    children: [
-                      SizedBox(
-                        height: 70.h,
-                        width: 100.w,
-                        child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            itemCount: 5,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          SizedBox(
-                                            width: 55.w,
-                                            child: Text(
-                                              articles![index].title,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.justify,
-                                              maxLines: 2,
-                                              style: TextStyle(
-                                                color: AppStyle.secondColor,
-                                                fontSize: 10.sp,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 1.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.watch_later_outlined,
-                                                    size: 14.sp,
-                                                    color: AppStyle.tirtaColor,
-                                                  ),
-                                                  Text(
-                                                    "${articles[index].publishedAt.hour} ago",
-                                                    style: TextStyle(
-                                                        color:
-                                                            AppStyle.tirtaColor,
-                                                        fontSize: 10.sp),
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                width: 10.w,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.chat_bubble_outline,
-                                                    size: 14.sp,
-                                                    color: AppStyle.tirtaColor,
-                                                  ),
-                                                  Text(
-                                                    "23",
-                                                    style: TextStyle(
-                                                        fontSize: 10.sp,
-                                                        color: AppStyle
-                                                            .tirtaColor),
-                                                  )
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        width: 37.w,
-                                        height: 12.h,
-                                        alignment: const Alignment(1, -1),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          child: Image.asset(
-                                            "lib/app/data/assets/images/virtualreality.jpg",
-                                            width: 30.w,
-                                            height: 10.h,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                ],
-                              );
-                            }),
-                      ),
-                      ElevatedButton(onPressed: () {}, child: Text("data"))
-                    ],
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text("${snapshot.error}"),
+        child: Obx(
+          () => FutureBuilder(
+              future: controller.futureNews.value,
+              builder: (context, snapshot) {
+                var state = snapshot.connectionState;
+                if (state != ConnectionState.done) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
                   );
                 } else {
-                  return const Text("data");
+                  if (snapshot.hasData) {
+                    List<Article>? articles = snapshot.data;
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: 70.h,
+                          width: 100.w,
+                          child: ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              itemCount: 5,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            SizedBox(
+                                              width: 55.w,
+                                              child: Text(
+                                                articles![index].title,
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.justify,
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                  color: AppStyle.secondColor,
+                                                  fontSize: 10.sp,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 1.h,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons
+                                                          .watch_later_outlined,
+                                                      size: 14.sp,
+                                                      color:
+                                                          AppStyle.tirtaColor,
+                                                    ),
+                                                    Text(
+                                                      "${articles[index].publishedAt.hour} ago",
+                                                      style: TextStyle(
+                                                          color: AppStyle
+                                                              .tirtaColor,
+                                                          fontSize: 10.sp),
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  width: 10.w,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.chat_bubble_outline,
+                                                      size: 14.sp,
+                                                      color:
+                                                          AppStyle.tirtaColor,
+                                                    ),
+                                                    Text(
+                                                      "23",
+                                                      style: TextStyle(
+                                                          fontSize: 10.sp,
+                                                          color: AppStyle
+                                                              .tirtaColor),
+                                                    )
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                          width: 37.w,
+                                          height: 12.h,
+                                          alignment: const Alignment(1, -1),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: Image.asset(
+                                              "lib/app/data/assets/images/virtualreality.jpg",
+                                              width: 30.w,
+                                              height: 10.h,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 2.h,
+                                    ),
+                                  ],
+                                );
+                              }),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (controller.pages > 1)
+                              ElevatedButton(
+                                onPressed: () {
+                                  controller.fetchPrevPage();
+                                },
+                                child: Text("Before"),
+                              ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
+                              child: Text(controller.pages.toString(),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 12)),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                controller.fetchNextPage();
+                              },
+                              child: Text("Next"),
+                            ),
+                          ],
+                        )
+                      ],
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text("${snapshot.error}"),
+                    );
+                  } else {
+                    return const Text("data");
+                  }
                 }
-              }
-            }));
+              }),
+        ));
   }
 }
