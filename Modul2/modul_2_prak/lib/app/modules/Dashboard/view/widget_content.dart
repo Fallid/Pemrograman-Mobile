@@ -11,10 +11,8 @@ class ContentButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: const ButtonStyle(
-          overlayColor: MaterialStatePropertyAll(Colors.transparent)),
-      onPressed: () {
+    return InkWell(
+      onTap: () {
         Get.toNamed(Routes.NOTIFICATION);
       },
       child: Column(

@@ -7,8 +7,4 @@ class NotifController extends GetxController {
   String? passName;
   String? passBio;
   late int itemCount;
-  readNamaStorage() async {
-    passName = storageNotif.read("nama");
-    itemCount = storageNotif.read("totalItem");
-  }
 }
