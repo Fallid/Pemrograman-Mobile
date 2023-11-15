@@ -128,105 +128,6 @@ class ContentNewsButton extends GetView<DashboardController> {
   }
 }
 
-class CategoryButtons extends GetView<DashboardController> {
-  const CategoryButtons({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: SizedBox(
-        height: 90.h,
-        child: Padding(
-          padding: EdgeInsets.only(left: 3.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                margin: EdgeInsets.only(right: 3.w),
-                height: 4.h,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll(AppStyle.secondColor),
-                  ),
-                  child: Text(
-                    "All",
-                    style: TextStyle(color: AppStyle.tirtaColor),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(right: 3.w),
-                height: 4.h,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll(AppStyle.tirtaOnActiveColor),
-                  ),
-                  child: Text(
-                    "Gaming",
-                    style: TextStyle(color: AppStyle.tirtaColor),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(right: 3.w),
-                height: 4.h,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll(AppStyle.tirtaOnActiveColor),
-                  ),
-                  child: Text(
-                    "Business",
-                    style: TextStyle(color: AppStyle.tirtaColor),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(right: 3.w),
-                height: 4.h,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll(AppStyle.tirtaOnActiveColor),
-                  ),
-                  child: Text(
-                    "Crypto",
-                    style: TextStyle(color: AppStyle.tirtaColor),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(right: 3.w),
-                height: 4.h,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll(AppStyle.tirtaOnActiveColor),
-                  ),
-                  child: Text(
-                    "Technology",
-                    style: TextStyle(color: AppStyle.tirtaColor),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class ContentNewsCategory extends GetView<NewsController> {
   const ContentNewsCategory({
     super.key,
@@ -359,20 +260,20 @@ class ContentNewsCategory extends GetView<NewsController> {
                                 onPressed: () {
                                   controller.fetchPrevPage();
                                 },
-                                child: Text("Before"),
+                                child: const Text("Before"),
                               ),
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: Text(controller.pages.toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 12)),
                             ),
                             ElevatedButton(
                               onPressed: () {
                                 controller.fetchNextPage();
                               },
-                              child: Text("Next"),
+                              child: const Text("Next"),
                             ),
                           ],
                         )

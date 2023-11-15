@@ -1,11 +1,3 @@
-// To parse this JSON data, do
-//
-//     final news = newsFromJson(jsonString);
-
-// News newsFromJson(String str) => News.fromJson(json.decode(str));
-
-// String newsToJson(News data) => json.encode(data.toJson());
-
 class Article {
   Source source;
   String author;
@@ -53,23 +45,3 @@ class Source {
         name: json["name"]!,
       );
 }
-
-// enum Id { GOOGLE_NEWS }
-
-// final idValues = EnumValues({"google-news": Id.GOOGLE_NEWS});
-
-// enum Name { GOOGLE_NEWS }
-
-// final nameValues = EnumValues({"Google News": Name.GOOGLE_NEWS});
-
-// class EnumValues<T> {
-//   Map<String, T> map;
-//   late Map<T, String> reverseMap;
-
-//   EnumValues(this.map);
-
-//   Map<T, String> get reverse {
-//     reverseMap = map.map((k, v) => MapEntry(v, k));
-//     return reverseMap;
-//   }
-// }

@@ -21,7 +21,7 @@ class _NewsViewState extends State<NewsView> {
     return Scaffold(
         backgroundColor: AppStyle.backgroundColor,
         appBar: AppBar(
-          toolbarHeight: 12.5.h,
+          toolbarHeight: 10.h,
           title: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,6 +41,7 @@ class _NewsViewState extends State<NewsView> {
           ),
           actions: [
             Container(
+                width: 5.w,
                 margin: const EdgeInsets.only(right: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
@@ -59,9 +60,7 @@ class _NewsViewState extends State<NewsView> {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
-            children: [
-              ContentNewsCategory()
-              ],
+            children: [ContentNewsCategory()],
           ),
         ));
   }
