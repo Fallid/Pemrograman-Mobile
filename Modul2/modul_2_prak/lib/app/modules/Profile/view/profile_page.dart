@@ -10,7 +10,6 @@ import 'package:sizer/sizer.dart';
 
 class ProfileView extends GetView<ProfileController> {
   ProfileView({Key? key}) : super(key: key);
-
   final ProfileController profileController = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class MyProfileView extends StatefulWidget {
 }
 
 class _MyProfileViewState extends State<MyProfileView> {
-  final _profileController = ProfileController.profileController;
+  var _profileController = ProfileController.profileController;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

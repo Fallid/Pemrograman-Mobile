@@ -4,7 +4,6 @@ import 'package:modul_3_latihan/app/modules/home/controllers/home_controller.dar
 
 import 'package:modul_3_latihan/app/data/api/api_response.dart/todo.dart';
 import 'package:modul_3_latihan/app/routes/app_pages.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -67,7 +66,7 @@ class HomeView extends GetView<HomeController> {
               }
             }
           },
-          future: controller.futureTodos,
+          future: controller.fetchTodos(),
         ),
       ),
     );

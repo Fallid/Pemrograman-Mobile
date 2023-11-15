@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+for the output:
+<img src="https://github.com/Fallid/Pemrograman-Mobile/blob/developing/Assets/outputtugas3.png"/>
+<img src="https://github.com/Fallid/Pemrograman-Mobile/blob/developing/Assets/outputtugas3pt2.png"/>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

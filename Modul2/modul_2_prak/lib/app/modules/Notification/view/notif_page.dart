@@ -26,58 +26,20 @@ class MyNotif extends StatefulWidget {
 }
 
 class _MyNotifState extends State<MyNotif> {
-  var _notifController = NotifController.notifController;
   @override
   Widget build(BuildContext context) {
-    _notifController.readNamaStorage();
     return Scaffold(
-      backgroundColor: AppStyle.backgroundColor,
-      appBar: AppBar(
         backgroundColor: AppStyle.backgroundColor,
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(Icons.arrow_back_ios)),
-        title: const Text("Notification"),
-      ),
-      body: Padding(
-          padding: EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 0),
-          child: ListView.builder(
-              itemCount: _notifController.itemCount,
-              itemBuilder: ((context, index) {
-                return Card(
-                    margin: EdgeInsets.only(bottom: 2.h),
-                    color: AppStyle.tirtaOnActiveColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        // CircleAvatar(
-                        //   backgroundImage: FileImage(File(_notifController
-                        //       .profileModel.value[index].imagePath!)),
-                        // ),
-                        SizedBox(
-                          width: 3.w,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              _notifController.passName.toString(),
-                              style: TextStyle(
-                                  color: AppStyle.secondColor, fontSize: 14.sp),
-                            ),
-                            // Text(
-                            //   _notifController.profileModel.value[index].bio!,
-                            //   style: TextStyle(
-                            //       color: AppStyle.secondColor, fontSize: 12.sp),
-                            // ),
-                          ],
-                        )
-                      ],
-                    ));
-              }))),
-    );
+        appBar: AppBar(
+          backgroundColor: AppStyle.backgroundColor,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(Icons.arrow_back_ios)),
+          title: const Text("Notification"),
+        ),
+        body: Default());
   }
 
   SingleChildScrollView Default() {
