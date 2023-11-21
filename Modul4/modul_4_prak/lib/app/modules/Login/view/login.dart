@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:modul_4_prak/app/modules/Register/controllers/register_controller.dart';
+import 'package:modul_4_prak/app/modules/Login/controllers/login_controller.dart';
 import 'package:modul_4_prak/app/modules/Register/view/register.dart';
 import 'package:modul_4_prak/style/AppStyle.dart';
 import 'package:sizer/sizer.dart';
@@ -12,7 +12,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final _authController = Get.put(RegisterController());
+  final _authController = Get.put(LoginController());
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();

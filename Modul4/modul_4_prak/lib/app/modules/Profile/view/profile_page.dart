@@ -32,24 +32,36 @@ class _MyProfileViewState extends State<MyProfileView> {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(
-          elevation: 0.8,
-          backgroundColor: AppStyle.backgroundColor,
-          title: Row(
-            children: [
-              Icon(
-                Icons.person,
+        elevation: 0.8,
+        backgroundColor: AppStyle.backgroundColor,
+        title: Row(
+          children: [
+            Icon(
+              Icons.person,
+              color: AppStyle.secondColor,
+              size: 3.5.h,
+            ),
+            SizedBox(
+              width: 3.w,
+            ),
+            Text(
+              "Profile",
+              style: TextStyle(color: AppStyle.secondColor),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                _profileController.logout();
+              },
+              icon: Icon(
+                Icons.logout,
                 color: AppStyle.secondColor,
                 size: 3.5.h,
-              ),
-              SizedBox(
-                width: 3.w,
-              ),
-              Text(
-                "Profile",
-                style: TextStyle(color: AppStyle.secondColor),
-              ),
-            ],
-          )),
+              ))
+        ],
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
