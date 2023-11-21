@@ -44,6 +44,8 @@ The project is structured as follows:
 
 - [`Assets` contains assets for project](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Assets)
 - [`Modul 1` contains Modul 1 CodeLab and Demo.](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Modul%201)
+- [`Modul 2` contains Modul 2 CodeLab and Demo.](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Modul2)
+- [`Modul 3` contains Modul 2 CodeLab and Demo.](https://github.com/Fallid/Pemrograman-Mobile/tree/main/Modul3)
 
 ---
 
