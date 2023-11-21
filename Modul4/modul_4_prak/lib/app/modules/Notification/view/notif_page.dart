@@ -5,10 +5,10 @@ import 'package:modul_4_prak/style/AppStyle.dart';
 
 import 'package:sizer/sizer.dart';
 
-class NotifView extends GetView<NotifController> {
+class NotifView extends GetView<MessagingController> {
   NotifView({super.key});
 
-  final NotifController notifController = Get.put(NotifController());
+  final MessagingController notifController = Get.put(MessagingController());
 
   @override
   Widget build(BuildContext context) {

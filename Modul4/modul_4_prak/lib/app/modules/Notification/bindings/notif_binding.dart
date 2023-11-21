@@ -4,6 +4,6 @@ import 'package:modul_4_prak/app/modules/Notification/controller/notif_controlle
 class NotifBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<NotifController>(() => NotifController());
+    Get.lazyPut<MessagingController>(() => MessagingController());
   }
 }
