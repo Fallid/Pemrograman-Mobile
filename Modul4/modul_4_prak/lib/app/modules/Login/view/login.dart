@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:modul_4_prak/app/Routes/app_pages.dart';
 import 'package:modul_4_prak/app/modules/Login/controllers/login_controller.dart';
 import 'package:modul_4_prak/app/modules/Register/view/register.dart';
 import 'package:modul_4_prak/style/AppStyle.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 import 'package:sizer/sizer.dart';
 
 class LoginView extends StatefulWidget {
@@ -13,7 +16,6 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final _authController = Get.put(LoginController());
-
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -146,6 +148,14 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ],
               ),
+              SignInButton(
+                Buttons.google,
+                onPressed: () {
+                  _authController.handleGoogleSignIn();
+
+                  print("google onclicked");
+                },
+              )
             ],
           ),
         ),

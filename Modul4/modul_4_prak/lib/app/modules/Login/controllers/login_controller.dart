@@ -7,13 +7,30 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final SharedPreferences _prefs = Get.find<SharedPreferences>();
+  User? user;
   RxBool isLoading = false.obs;
   RxBool isLoggedIn = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    checkLoginStatus(); // Cek status login saat controller diinisialisasi
+    _auth.authStateChanges().listen((event) {
+      user = event;
+    });
+    checkLoginStatus();
+  }
+
+  Future<void> handleGoogleSignIn() async {
+    try {
+      GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
+      _auth.signInWithProvider(_googleAuthProvider);
+      Get.snackbar('Success', 'Login successful',
+          backgroundColor: Colors.green);
+      isLoggedIn.value = true;
+      Get.offAllNamed(Routes.DASHBOARD);
+    } catch (error) {
+      print(error);
+    }
   }
 
   Future<void> checkLoginStatus() async {
