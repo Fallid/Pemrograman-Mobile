@@ -40,8 +40,8 @@ class ProfileController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-    profileNameTextEditController.dispose();
-    profileBioTextEditController.dispose();
+    // profileNameTextEditController.dispose();
+    // profileBioTextEditController.dispose();
   }
 
   void logout() {
