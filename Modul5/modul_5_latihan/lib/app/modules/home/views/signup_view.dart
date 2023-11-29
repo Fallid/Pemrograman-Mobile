@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modul_5_latihan/app/modules/home/controllers/account_controller.dart';
+import 'package:modul_5_latihan/app/routes/app_pages.dart';
 
 class SignUpView extends StatelessWidget {
   final AccountController accountController = Get.put(AccountController());
@@ -37,6 +38,7 @@ class SignUpView extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
+                print("Account create");
                 Map<String, dynamic> map = {
                   'userId': 'unique()',
                   'email': emailController.text,
@@ -44,6 +46,7 @@ class SignUpView extends StatelessWidget {
                   'name': nameController.text,
                 };
                 await accountController.createAccount(map);
+                Get.offAllNamed(Routes.HOME);
               },
               child: Text('Create Account'),
             ),
