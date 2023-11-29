@@ -20,9 +20,9 @@ class DatabaseController extends HomeController {
         collectionId: "6566a2c22a98ceeca0b2",
         data: map,
         permissions: [
-          Permission.read(Role.user("6566a454a09037206388")),
-          Permission.update(Role.user("6566a454a09037206388")),
-          Permission.delete(Role.user("6566a454a09037206388")),
+          Permission.read(Role.any()),
+          Permission.update(Role.any()),
+          Permission.delete(Role.any()),
         ],
       );
       print("DatabaseController:: storeUserName $databases");

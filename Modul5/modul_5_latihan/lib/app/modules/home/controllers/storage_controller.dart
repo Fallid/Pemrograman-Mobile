@@ -1,29 +1,33 @@
+import 'dart:io';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modul_5_latihan/app/modules/home/controllers/home_controller.dart';
 
-class AccountController extends HomeController {
-  Account? account;
+class StorageController extends HomeController {
+  Storage? storage;
   @override
   void onInit() {
     super.onInit();
     // appwrite
-    account = Account(client);
+    storage = Storage(client);
   }
 
-  Future createAccount(Map map) async {
+  Future storeImage(File file) async {
     try {
-      final result = await account!.create(
-        userId: map['userId'],
-        email: map['email'],
-        password: map['password'],
-        name: map['name'],
+      final result = await storage!.createFile(
+        bucketId: '6566a4d59e526e57587c',
+        fileId: ID.unique(),
+        file: InputFile.fromPath(
+          path: file.path,
+          filename: 'image.jpg',
+        ),
       );
-      print("AccountController:: createAccount $result");
+      print("StorageController:: storeImage $result");
     } catch (error) {
       Get.defaultDialog(
-        title: "Error Account",
+        title: "Error Storage",
         titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
         titleStyle: Get.context?.theme.textTheme.titleLarge,
         content: Text(
@@ -36,16 +40,23 @@ class AccountController extends HomeController {
     }
   }
 
-  Future createEmailSession(Map map) async {
+  Future<List<String>> listImages() async {
     try {
-      final result = await account!.createEmailSession(
-        email: map['email'],
-        password: map['password'],
+      final result = await storage!.listFiles(
+        bucketId: '6566a4d59e526e57587c',
       );
-      print("AccountController:: createEmailSession $result");
+      List<String> imageUrls = [];
+      for (var file in result.files) {
+        String imageUrl = storage!.getFileView(
+          bucketId: '6566a4d59e526e57587c',
+          fileId: file.$id,
+        ) as String;
+        imageUrls.add(imageUrl);
+      }
+      return imageUrls;
     } catch (error) {
       Get.defaultDialog(
-        title: "Error Account",
+        title: "Error Storage",
         titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
         titleStyle: Get.context?.theme.textTheme.titleLarge,
         content: Text(
@@ -55,6 +66,7 @@ class AccountController extends HomeController {
         ),
         contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
       );
+      return [];
     }
   }
 }
