@@ -18,9 +18,12 @@ class _ForumViewState extends State<ForumView> {
     return Scaffold(
       backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(),
-      body: Text(
-        controller.getCollection().toString(),
-        style: TextStyle(color: AppStyle.secondColor),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text(controller.getCollection().toString()),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
