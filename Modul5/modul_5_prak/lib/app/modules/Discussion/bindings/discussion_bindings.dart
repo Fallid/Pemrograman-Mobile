@@ -4,8 +4,6 @@ import 'package:modul_4_prak/app/modules/Discussion/controller/discussion_contro
 class DiscussionBinding extends Bindings {
   @override
   void dependencies() {
-    void dependencies() {
-      Get.lazyPut<DiscussionController>(() => DiscussionController());
-    }
+    Get.lazyPut<DiscussionController>(() => DiscussionController());
   }
 }
