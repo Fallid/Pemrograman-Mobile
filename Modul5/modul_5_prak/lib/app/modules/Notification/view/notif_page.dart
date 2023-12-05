@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:modul_4_prak/app/Routes/app_pages.dart';
 import 'package:modul_4_prak/app/modules/Notification/controller/notif_controller.dart';
 import 'package:modul_4_prak/style/AppStyle.dart';
 
@@ -29,35 +30,25 @@ class _MyNotifState extends State<MyNotif> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppStyle.backgroundColor,
+      appBar: AppBar(
         backgroundColor: AppStyle.backgroundColor,
-        appBar: AppBar(
-          backgroundColor: AppStyle.backgroundColor,
-          leading: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: const Icon(Icons.arrow_back_ios)),
-          title: const Text("Notification"),
-        ),
-        body: Default());
-  }
-
-  SingleChildScrollView Default() {
-    return const SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-          NewsContain(),
-        ],
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_ios)),
+        title: const Text("Notification"),
+      ),
+      body: Column(
+        children: [],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed(Routes.DISCUSSION);
+        },
+        backgroundColor: AppStyle.primaryColor,
+        child: const Icon(Icons.add),
       ),
     );
   }
