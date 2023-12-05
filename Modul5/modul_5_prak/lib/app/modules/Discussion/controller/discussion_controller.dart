@@ -1,6 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:modul_4_prak/app/data/api/appwrite.dart';
 import 'package:modul_4_prak/app/data/api/user_client.dart';
 
 class DiscussionController extends GetxController {
@@ -24,9 +25,9 @@ class DiscussionController extends GetxController {
   Future inputDiscussion(Map map) async {
     try {
       final result = await databases!.createDocument(
-        databaseId: "656f6caf6f64ebd2d053",
+        databaseId: AppWrite.DatabaseId,
         documentId: ID.unique(),
-        collectionId: "656f6cbde0026b924ffc",
+        collectionId: AppWrite.CollectionId,
         data: map,
         permissions: [
           Permission.read(Role.any()),

@@ -7,6 +7,8 @@ import 'package:modul_4_prak/app/modules/Dashboard/view/dashboard_page.dart';
 import 'package:modul_4_prak/app/modules/Dashboard/view/news_page.dart';
 import 'package:modul_4_prak/app/modules/Discussion/bindings/discussion_bindings.dart';
 import 'package:modul_4_prak/app/modules/Discussion/view/discussion_page.dart';
+import 'package:modul_4_prak/app/modules/Forum/bindings/forum_binding.dart';
+import 'package:modul_4_prak/app/modules/Forum/view/forum_page.dart';
 import 'package:modul_4_prak/app/modules/Login/bindings/login_binding.dart';
 import 'package:modul_4_prak/app/modules/Login/view/login.dart';
 import 'package:modul_4_prak/app/modules/Notification/bindings/notif_binding.dart';
@@ -56,6 +58,8 @@ class AppPages {
     GetPage(
         name: _Paths.DISCUSSION,
         page: () => const DisucssionView(),
-        binding: DiscussionBinding())
+        binding: DiscussionBinding()),
+    GetPage(
+        name: _Paths.FORUM, page: () => ForumView(), binding: ForumBinding())
   ];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modul_4_prak/app/modules/Dashboard/controllers/dashboard_controller.dart';
+import 'package:modul_4_prak/app/modules/Forum/view/forum_page.dart';
 import 'package:modul_4_prak/app/modules/Notification/view/notif_page.dart';
 import 'package:modul_4_prak/app/modules/Profile/view/profile_page.dart';
 import 'package:modul_4_prak/style/AppStyle.dart';
@@ -31,7 +32,7 @@ class MyDashboard extends StatefulWidget {
 class _MyDashboardState extends State<MyDashboard> {
   var dateTime = DateTime.now();
   int _selectedIndex = 0;
-  final screens = [const HomeView(), NotifView(), NotifView(), ProfileView()];
+  final screens = [const HomeView(), NotifView(), ForumView(), ProfileView()];
 
   @override
   Widget build(BuildContext context) {
