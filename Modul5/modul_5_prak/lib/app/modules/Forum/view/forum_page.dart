@@ -18,13 +18,7 @@ class _ForumViewState extends State<ForumView> {
     return Scaffold(
       backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text(controller.getCollection().toString()),
-          )
-        ],
-      ),
+      body: Text(controller.getCollection().toString()),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.toNamed(Routes.DISCUSSION);
