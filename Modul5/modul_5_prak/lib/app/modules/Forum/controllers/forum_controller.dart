@@ -2,11 +2,14 @@ import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:get/get.dart';
 import 'package:modul_4_prak/app/data/api/appwrite.dart';
+import 'package:modul_4_prak/app/data/api/user_client.dart';
 
 class ForumController extends GetxController {
+  final UserClient db = Get.put(UserClient());
   // Future<dynamic> deleteForum(String fileId){
   //   final response  =  Storage(client)
   // }
+
   static ForumController forum = Get.find();
   getCollection() async {
     final client =
