@@ -58,7 +58,7 @@ class AppPages {
         name: _Paths.LOGIN, page: () => LoginView(), binding: LoginBinding()),
     GetPage(
         name: _Paths.DISCUSSION,
-        page: () => const DisucssionView(),
+        page: () => DiscussionView(),
         binding: DiscussionBinding()),
     GetPage(
         name: _Paths.FORUM, page: () => ForumView(), binding: ForumBinding()),

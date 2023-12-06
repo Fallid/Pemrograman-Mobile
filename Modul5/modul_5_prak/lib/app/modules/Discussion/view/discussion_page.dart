@@ -1,14 +1,49 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:modul_4_prak/app/modules/Discussion/controller/discussion_controller.dart';
+import 'package:modul_4_prak/app/modules/Discussion/controller/storage_controller.dart';
+import 'package:modul_4_prak/style/AppStyle.dart';
 
-class DisucssionView extends GetView<DiscussionController> {
-  const DisucssionView({super.key});
+class DiscussionView extends StatefulWidget {
+  const DiscussionView({super.key});
+
+  @override
+  State<DiscussionView> createState() => _DiscussionViewState();
+}
+
+class _DiscussionViewState extends State<DiscussionView> {
+  final controller = Get.put(DiscussionController());
+  final StorageController storageController = Get.put(StorageController());
+  final ImagePicker _picker = ImagePicker();
+  XFile? _image;
+
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = pickedFile;
+    });
+  }
+
+  List<String> _imageUrls = [];
+
+  Future<void> _fetchImages() async {
+    List<String> images = await storageController.listImages();
+    setState(() {
+      _imageUrls = images;
+    });
+  }
+
+  void onInit() {
+    _fetchImages();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DiscussionController());
     return Scaffold(
+      backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(),
       // body: Text("Ini create discussion"),
       body: Padding(
@@ -34,6 +69,27 @@ class DisucssionView extends GetView<DiscussionController> {
             SizedBox(height: 20),
             SizedBox(height: 20),
             ElevatedButton(
+              onPressed: _pickImage,
+              child: Text('Pick Image from Gallery'),
+            ),
+            if (_image != null) ...[
+              Container(
+                  width: 10, height: 10, child: Image.file(File(_image!.path))),
+              ElevatedButton(
+                onPressed: () =>
+                    storageController.storeImage(File(_image!.path)),
+                child: Text('Upload Image'),
+              ),
+            ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: _imageUrls.length,
+                itemBuilder: (context, index) {
+                  return Image.network(_imageUrls[index]);
+                },
+              ),
+            ),
+            ElevatedButton(
               onPressed: () {
                 if (controller.titlecontroller.text.isNotEmpty) {
                   Map<String, dynamic> data = {
@@ -48,6 +104,8 @@ class DisucssionView extends GetView<DiscussionController> {
                     snackPosition: SnackPosition.BOTTOM,
                   );
                 }
+
+                storageController.storeImage(File(_image!.path));
               },
               child: Text('Store Name'),
             ),
