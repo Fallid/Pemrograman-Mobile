@@ -9,6 +9,7 @@ import 'package:modul_4_prak/app/modules/Discussion/bindings/discussion_bindings
 import 'package:modul_4_prak/app/modules/Discussion/view/discussion_page.dart';
 import 'package:modul_4_prak/app/modules/Forum/bindings/forum_binding.dart';
 import 'package:modul_4_prak/app/modules/Forum/view/forum_page.dart';
+import 'package:modul_4_prak/app/modules/Forum/view/forum_update.dart';
 import 'package:modul_4_prak/app/modules/Login/bindings/login_binding.dart';
 import 'package:modul_4_prak/app/modules/Login/view/login.dart';
 import 'package:modul_4_prak/app/modules/Notification/bindings/notif_binding.dart';
@@ -60,6 +61,10 @@ class AppPages {
         page: () => const DisucssionView(),
         binding: DiscussionBinding()),
     GetPage(
-        name: _Paths.FORUM, page: () => ForumView(), binding: ForumBinding())
+        name: _Paths.FORUM, page: () => ForumView(), binding: ForumBinding()),
+    GetPage(
+        name: _Paths.UPDATEFORUM,
+        page: () => UpdateView(),
+        binding: ForumBinding())
   ];
 }

@@ -16,7 +16,6 @@ class _ForumViewState extends State<ForumView> {
   final controller = Get.put(ForumController());
   @override
   Widget build(BuildContext context) {
-    controller.getCollection();
     return Scaffold(
       backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(

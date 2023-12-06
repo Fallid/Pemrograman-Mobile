@@ -1,10 +1,6 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:modul_4_prak/app/Routes/app_pages.dart';
-import 'package:modul_4_prak/app/data/api/user_client.dart';
 import 'package:modul_4_prak/app/modules/Forum/controllers/forum_controller.dart';
 import 'package:modul_4_prak/style/AppStyle.dart';
 import 'package:sizer/sizer.dart';
@@ -84,7 +80,13 @@ class ForumItem extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            IconButton(onPressed: () {}, icon: Icon(Icons.edit))
+                            IconButton(
+                                onPressed: () {
+                                  controller.getIdDocument(
+                                      id, description, title);
+                                  Get.toNamed(Routes.UPDATEFORUM);
+                                },
+                                icon: Icon(Icons.edit))
                           ],
                         ),
                       ],

@@ -1,54 +1,25 @@
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modul_4_prak/app/Routes/app_pages.dart';
 import 'package:modul_4_prak/app/data/api/appwrite.dart';
 import 'package:modul_4_prak/app/data/api/user_client.dart';
 
 class ForumController extends GetxController {
+  final TextEditingController titlecontroller = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
   final UserClient db = Get.put(UserClient());
-  // Future<dynamic> deleteForum(String fileId){
-  //   final response  =  Storage(client)
-  // }
+  final UserClient dbController = Get.put(UserClient());
   static ForumController forum = Get.find();
-  getCollection() async {
-    final client =
-        Client().setEndpoint(AppWrite.Endpoint).setProject(AppWrite.ProjectId);
-    final database = Databases(client);
-    try {
-      DocumentList response = await database.listDocuments(
-          databaseId: AppWrite.DatabaseId,
-          collectionId: AppWrite.CollectionId,
-          queries: [Query.equal('Forum', 'forum')]);
-      List<Map<String, dynamic>> dataList =
-          response.documents.map((e) => e.data).toList();
-      dataList.forEach((data) {
-        print(data['Title']); // Tampilkan data untuk setiap indeks
-        print(data['id']); // Tampilkan data untuk setiap indeks
-      });
-      return dataList;
-    } on AppwriteException catch (e) {
-      print(e);
-    }
-  }
+  String idPass = "";
+  String descPass = "";
+  String titlePass = "";
 
-  getIdDocuments() async {
-    final client =
-        Client().setEndpoint(AppWrite.Endpoint).setProject(AppWrite.ProjectId);
-    final database = Databases(client);
-    try {
-      DocumentList response = await database.listDocuments(
-          databaseId: AppWrite.DatabaseId,
-          collectionId: AppWrite.CollectionId,
-          queries: [Query.equal('Forum', 'forum')]);
-      List<String> dataList = response.documents.map((e) => e.$id).toList();
-      dataList.forEach((data) {
-        print(data); // Tampilkan data untuk setiap indeks
-      });
-      return dataList;
-    } on AppwriteException catch (e) {
-      print(e);
-    }
+  Databases? databases;
+  @override
+  void onInit() {
+    super.onInit();
+    databases = Databases(dbController.client);
   }
 
   deleteDocuments(String id) {
@@ -67,5 +38,41 @@ class ForumController extends GetxController {
     }).catchError((error) {
       print(error.response);
     });
+  }
+
+  Future updateDiscussion(Map map) async {
+    try {
+      final result = await databases!.updateDocument(
+        databaseId: AppWrite.DatabaseId,
+        documentId: idPass,
+        collectionId: AppWrite.CollectionId,
+        data: map,
+        permissions: [
+          Permission.read(Role.any()),
+          Permission.update(Role.any()),
+          Permission.delete(Role.any()),
+        ],
+      );
+      print("DatabaseController:: inputName $result");
+      Get.offAllNamed(Routes.FORUM);
+    } catch (error) {
+      Get.defaultDialog(
+        title: "Error Database",
+        titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
+        titleStyle: Get.context?.theme.textTheme.titleLarge,
+        content: Text(
+          "$error",
+          style: Get.context?.theme.textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+        contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
+      );
+    }
+  }
+
+  getIdDocument(String id, String desc, String title) {
+    idPass = id;
+    descPass = desc;
+    titlePass = title;
   }
 }
