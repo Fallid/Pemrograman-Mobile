@@ -1,6 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:modul_4_prak/app/Routes/app_pages.dart';
 import 'package:modul_4_prak/app/data/api/appwrite.dart';
 import 'package:modul_4_prak/app/data/api/user_client.dart';
 
@@ -36,6 +37,7 @@ class DiscussionController extends GetxController {
         ],
       );
       print("DatabaseController:: inputName $result");
+      Get.offAllNamed(Routes.FORUM);
     } catch (error) {
       Get.defaultDialog(
         title: "Error Database",

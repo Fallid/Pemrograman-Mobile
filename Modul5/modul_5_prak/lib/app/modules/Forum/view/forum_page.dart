@@ -14,12 +14,27 @@ class ForumView extends StatefulWidget {
 
 class _ForumViewState extends State<ForumView> {
   final controller = Get.put(ForumController());
-
   @override
   Widget build(BuildContext context) {
+    controller.getCollection();
     return Scaffold(
       backgroundColor: AppStyle.backgroundColor,
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: AppStyle.backgroundColor,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () {
+              Get.offAllNamed(Routes.DASHBOARD);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: AppStyle.secondColor,
+            )),
+        title: Text(
+          "Forums",
+          style: TextStyle(color: AppStyle.secondColor),
+        ),
+      ),
       body: ListView(
         children: [
           Container(
@@ -36,6 +51,7 @@ class _ForumViewState extends State<ForumView> {
                           title: disscussion.data["Title"].toString(),
                           description:
                               disscussion.data["Description"].toString(),
+                          id: disscussion.$id.toString(),
                         );
                       },
                     )
