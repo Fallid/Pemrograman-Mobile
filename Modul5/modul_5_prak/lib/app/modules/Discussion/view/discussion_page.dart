@@ -44,7 +44,6 @@ class _DiscussionViewState extends State<DiscussionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppStyle.backgroundColor,
       appBar: AppBar(),
       // body: Text("Ini create discussion"),
       body: Padding(
