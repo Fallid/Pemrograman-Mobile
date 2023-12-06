@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:modul_4_prak/app/modules/Discussion/controller/discussion_controller.dart';
 import 'package:modul_4_prak/app/modules/Discussion/controller/storage_controller.dart';
 import 'package:modul_4_prak/style/AppStyle.dart';
+import 'package:sizer/sizer.dart';
 
 class DiscussionView extends StatefulWidget {
   const DiscussionView({super.key});
@@ -74,12 +75,9 @@ class _DiscussionViewState extends State<DiscussionView> {
             ),
             if (_image != null) ...[
               Container(
-                  width: 10, height: 10, child: Image.file(File(_image!.path))),
-              ElevatedButton(
-                onPressed: () =>
-                    storageController.storeImage(File(_image!.path)),
-                child: Text('Upload Image'),
-              ),
+                  width: 50.w,
+                  height: 20.h,
+                  child: Image.file(File(_image!.path))),
             ],
             Expanded(
               child: ListView.builder(
