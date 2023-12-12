@@ -26,6 +26,7 @@ class DatabaseController extends HomeController {
         ],
       );
       print("DatabaseController:: storeUserName $databases");
+      print("DatabaseController:: storeUserName $result");
     } catch (error) {
       Get.defaultDialog(
         title: "Error Database",

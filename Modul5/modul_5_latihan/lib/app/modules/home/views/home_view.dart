@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:modul_5_latihan/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 

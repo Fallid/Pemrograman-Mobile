@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modul_4_prak/app/modules/Discussion/controller/discussion_controller.dart';
 import 'package:modul_4_prak/app/modules/Discussion/controller/storage_controller.dart';
-import 'package:modul_4_prak/style/AppStyle.dart';
 import 'package:sizer/sizer.dart';
 
 class DiscussionView extends StatefulWidget {
