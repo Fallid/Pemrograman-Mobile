@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:modul_6_latihan/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -13,12 +14,12 @@ class HomeView extends GetView<HomeController> {
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: Center(
+          child: ElevatedButton(
+              onPressed: () {
+                Get.toNamed(Routes.LOGIN);
+              },
+              child: const Text("Login Page"))),
     );
   }
 }

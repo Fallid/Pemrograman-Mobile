@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Login'),
+          title: Text('Login Page'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
