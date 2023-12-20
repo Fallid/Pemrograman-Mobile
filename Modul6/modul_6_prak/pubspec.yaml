@@ -1,0 +1,39 @@
+name: modul_4_prak
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=3.2.1 <4.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  http: ^1.0.0
+  flutter:
+    sdk: flutter
+  sizer: ^2.0.15
+  intl: ^0.18.1
+  image_picker: ^1.0.4
+  get_storage: ^2.1.1
+  webview_flutter: ^4.4.1
+  firebase_core: ^2.22.0
+  firebase_auth: ^4.7.3
+  shared_preferences: ^2.2.0
+  flutter_svg: ^2.0.9
+  firebase_messaging: ^14.7.4
+  flutter_local_notifications: ^16.1.0
+  sign_in_button: ^3.2.0
+  appwrite: ^11.0.0
+  mockito: ^5.4.2
+  build_runner: ^2.4.6
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/app/data/assets/images/
+    - lib/app/data/assets/SVG/

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "286833354873",
+    "project_id": "pem-mobile23",
+    "storage_bucket": "pem-mobile23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286833354873:android:e67725dda3f90d07bb0ca8",
+        "android_client_info": {
+          "package_name": "com.naufal.modul_2_prak"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9m0l9k9VAm27fElA9QwXVHkVvaoXuIsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
